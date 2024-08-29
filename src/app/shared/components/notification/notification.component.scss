@@ -1,0 +1,23 @@
+.notification {
+  position: absolute;
+  width: 17rem;
+  top: 1.5rem;
+  padding: 1rem;
+  border-radius: .5rem;
+  font-size: 1rem;
+  color: #fff;
+  z-index: 1000;
+  opacity: 1;
+
+  &.success {
+    background-color: #66BB6A;
+    box-shadow: 0 .75rem 1rem #4CAF505C;
+    right: 1.5rem;
+  }
+
+  &.error {
+    background-color: #EF7DA0;
+    box-shadow: 0 .75rem 1rem #EF7DA05C;
+    left: 1.5rem;
+  }
+}

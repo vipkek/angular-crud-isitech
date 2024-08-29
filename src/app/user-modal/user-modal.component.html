@@ -1,0 +1,115 @@
+<div class="user-modal">
+  <div class="user-modal__form-wrapper">
+    <div class="user-modal__header">
+      {{ selectedUser ? selectedUser.firstName + ' ' + selectedUser.lastName : 'Create new user' }}
+    </div>
+
+    <div class="user-modal__close" (click)="closeModal()">
+      <img src="assets/img/close.svg" alt="close modal"/>
+    </div>
+
+    <form class="user-modal__form"
+          [formGroup]="form"
+          (ngSubmit)="submit()">
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="username">Username*</label>
+        <input class="user-modal__form-input"
+               type="text"
+               id="username"
+               name="username"
+               inputError
+               formControlName="username"
+               inputErrorControl="username"
+               [formGroup]="form"/>
+        <div class="form-error"></div>
+      </div>
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="first-name">First name*</label>
+        <input class="user-modal__form-input"
+               type="text"
+               id="first-name"
+               name="first-name"
+               inputError
+               formControlName="firstName"
+               inputErrorControl="firstName"
+               [formGroup]="form"/>
+        <div class="form-error"></div>
+      </div>
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="last-name">Last name*</label>
+        <input class="user-modal__form-input"
+               type="text"
+               id="last-name"
+               name="last-name"
+               inputError
+               formControlName="lastName"
+               inputErrorControl="lastName"
+               [formGroup]="form"/>
+        <div class="form-error"></div>
+      </div>
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="email">Email*</label>
+        <input class="user-modal__form-input"
+               type="email"
+               id="email"
+               name="email"
+               inputError
+               formControlName="email"
+               inputErrorControl="email"
+               [formGroup]="form"/>
+        <div class="form-error"></div>
+      </div>
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="type">Type*</label>
+        <select class="user-modal__form-select"
+                id="type"
+                name="type"
+                inputError
+                formControlName="userType"
+                inputErrorControl="userType"
+                [formGroup]="form">
+          <option value="Admin">Administrator</option>
+          <option [selected]="true" value="Driver">Driver</option>
+        </select>
+        <div class="form-error"></div>
+      </div>
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="password">Password*</label>
+        <input class="user-modal__form-input"
+               type="password"
+               id="password"
+               name="password"
+               inputError
+               formControlName="password"
+               inputErrorControl="password"
+               [formGroup]="form"/>
+        <div class="form-error"></div>
+      </div>
+      <div class="user-modal__form-group">
+        <label class="user-modal__form-label" for="password">Repeat Password*</label>
+        <input class="user-modal__form-input"
+               type="password"
+               id="repeat-password"
+               name="repeat-password"
+               inputError
+               formControlName="repeatPassword"
+               inputErrorControl="repeatPassword"
+               [formGroup]="form"/>
+        <div class="form-error"></div>
+      </div>
+
+      <button *ngIf="!selectedUser; else detailButtons"
+              class="user-modal__create-btn" type="submit">
+        Create
+      </button>
+
+      <ng-template #detailButtons>
+        <div class="user-modal__details-buttons">
+          <div class="user-modal__delete-btn" (click)="delete()">Delete</div>
+          <div class="user-modal__save-btn" (click)="edit()">Save</div>
+        </div>
+      </ng-template>
+
+    </form>
+  </div>
+</div>

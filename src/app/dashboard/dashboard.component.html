@@ -1,0 +1,44 @@
+<div class="user-management">
+
+  <div class="user-management__content">
+    <div class="user-management__table-wrapper">
+      <div class="user-management__header">
+        <button class="user-management__create-button" (click)="isUserModalOpen = true">Create User</button>
+      </div>
+      <table class="user-management__table">
+        <thead class="user-management__table-head">
+        <tr class="user-management__table-row">
+          <th class="user-management__table-header">USERNAME</th>
+          <th class="user-management__table-header">FIRST NAME</th>
+          <th class="user-management__table-header">LAST NAME</th>
+          <th class="user-management__table-header">EMAIL</th>
+          <th class="user-management__table-header">TYPE</th>
+        </tr>
+        </thead>
+        <tbody class="user-management__table-body">
+        <tr class="user-management__table-row"
+            *ngFor="let user of users"
+            (click)="onSelectUser(user)">
+          <td class="user-management__table-cell">{{ user.username }}</td>
+          <td class="user-management__table-cell">{{ user.firstName }}</td>
+          <td class="user-management__table-cell">{{ user.lastName }}</td>
+          <td class="user-management__table-cell">{{ user.email }}</td>
+          <td class="user-management__table-cell">{{ user.userType }}</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <user-modal
+      class="user-management__user-create"
+      *ngIf="isUserModalOpen"
+      [selectedUser]="selectedUser"
+      (onSubmit)="addUser($event)"
+      (onDelete)="deleteUser($event)"
+      (onEdit)="editUser($event)"
+      (close)="onCloseModal()">
+    </user-modal>
+  </div>
+
+</div>

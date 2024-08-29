@@ -1,0 +1,33 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+
+  &__title {
+    font-size: 5rem;
+    color: #ff4757;
+    margin: 0;
+  }
+
+  &__message {
+    font-size: 1.5rem;
+    color: #2f3542;
+    margin: 20px 0;
+  }
+
+  &__link {
+    font-size: 1rem;
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+
+    &:hover {
+      border-color: #3498db;
+      color: #2980b9;
+    }
+  }
+}

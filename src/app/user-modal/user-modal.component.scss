@@ -1,0 +1,140 @@
+.user-modal {
+  margin-top: 3.85rem;
+  display: flex;
+
+  &__form-wrapper {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    padding: 1.25rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 .75rem rgba(0, 0, 0, 0.1);
+  }
+
+  &__close {
+    position: absolute;
+    cursor: pointer;
+    right: 1rem;
+    top: 1rem;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  &__header {
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+
+  &__form-group {
+    margin-bottom: 1rem;
+  }
+
+  &__form-label {
+    display: block;
+    margin-bottom: .25rem;
+    font-weight: 500;
+    color: #3F4254;
+    font-size: .85rem;
+  }
+
+  &__form-input {
+    display: flex;
+    text-indent: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+    color: #3F4254;
+    background-color: #F3F6F9;
+    border: none;
+    border-radius: .4rem;
+  }
+
+  &__form-select {
+    display: flex;
+    text-indent: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+    color: #3F4254;
+    background-color: #F3F6F9;
+    border: none;
+    border-right: 1rem solid transparent;
+    border-radius: .4rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__form-input[type='email'] {
+    background: #F3F6F9 url('/assets/img/email-icon.svg') .25rem .75rem no-repeat padding-box;
+    text-indent: 2rem;
+  }
+
+  &__form-input--error {
+    border-color: #EF7DA0;
+  }
+
+  &__form-error {
+    color: #EF7DA0;
+    font-size: .65rem;
+    margin-top: .2rem;
+  }
+
+  &__create-btn {
+    margin: 0 auto;
+    width: 8rem;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  &__create-btn,
+  &__save-btn {
+    padding: .75rem 1rem;
+    width: 6rem;
+    text-align: center;
+    background-color: #2e8ff0;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    box-shadow: 0 .2rem .2rem rgba(46, 143, 240, 0.4);
+    transition: background-color 0.3s;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  &__delete-btn {
+    padding: .75rem 1rem;
+    width: 6rem;
+    text-align: center;
+    background-color: #F44682;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    box-shadow: 0 .2rem .2rem rgba(244, 70, 130, 0.62);
+    transition: background-color 0.3s;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  &__details-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
