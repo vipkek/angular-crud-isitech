@@ -1,5 +1,6 @@
-import { Directive, Input, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, Input, OnInit, ElementRef, Renderer2, OnDestroy } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 const ERROR_MESSAGES: { [key: string]: string } = {
   required: 'This field is required.',
@@ -14,21 +15,29 @@ const ERROR_MESSAGES: { [key: string]: string } = {
   selector: '[inputError]'
 })
 
-export class InputErrorDirective implements OnInit {
+export class InputErrorDirective implements OnInit, OnDestroy {
   @Input('inputErrorControl')
   controlName: string = '';
 
   @Input()
   formGroup: FormGroup = new FormGroup({});
 
+  private statusChangesSubscription: Subscription | null = null;
+
   constructor(private el: ElementRef,
               private renderer: Renderer2) {}
 
   ngOnInit() {
     const control = this.formGroup.get(this.controlName) as AbstractControl;
-    control.statusChanges.subscribe(() => {
+    this.statusChangesSubscription = control.statusChanges.subscribe(() => {
       this.setErrorMessages(control);
     });
+  }
+
+  ngOnDestroy() {
+    if (this.statusChangesSubscription) {
+      this.statusChangesSubscription.unsubscribe();
+    }
   }
 
   setErrorMessages(control: AbstractControl) {

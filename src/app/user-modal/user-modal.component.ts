@@ -5,7 +5,7 @@ import { CustomValidatorsService } from '../core/services/custom-validators.serv
 import { UserModel } from '../core/interface/models';
 import { generateRandID } from '../core/utils/generic';
 import { NotificationService } from '../core/services/notification.service';
-import { catchError, throwError } from 'rxjs';
+import { catchError, first, throwError } from 'rxjs';
 
 @Component({
   selector: 'user-modal',
@@ -87,6 +87,7 @@ export class UserModalComponent implements OnChanges {
 
     this.userService.createUser(data)
       .pipe(
+        first(),
         catchError(e => {
           this.notificationService.showError('Error erupted due User creation');
           return throwError(() => e);
@@ -108,6 +109,7 @@ export class UserModalComponent implements OnChanges {
 
     this.userService.deleteUser(this.selectedUser.username)
       .pipe(
+        first(),
         catchError(e => {
           this.notificationService.showError('Error erupted due User deletion');
           return throwError(() => e);
@@ -136,6 +138,7 @@ export class UserModalComponent implements OnChanges {
 
     this.userService.updateUser(data)
       .pipe(
+        first(),
         catchError(e => {
           this.notificationService.showError('Error erupted due User updating');
           return throwError(() => e);
