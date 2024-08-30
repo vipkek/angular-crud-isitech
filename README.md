@@ -1,3 +1,7 @@
+# Notes for username validation
+
+To successfully validate username input - just write `new` prefix before name
+
 # AngularTestIsitech
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
